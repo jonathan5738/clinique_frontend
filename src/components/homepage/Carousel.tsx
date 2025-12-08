@@ -1,6 +1,6 @@
 
 import "./Carousel.css";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useGetAllEventsQuery } from "../../api";
 import dayjs from "dayjs";
 import { PiCalendarDots, PiTimer} from "react-icons/pi";

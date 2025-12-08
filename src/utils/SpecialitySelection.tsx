@@ -11,7 +11,7 @@ export default function SpecialitySelection({
     isDepartmentSelected
 }: SpecialitySelectionProps){
     
-    const {data, isSuccess, isFetching, isLoading, isError} = useGetAllDepartmentPublicQuery();
+    const {data, isSuccess, isFetching, isLoading} = useGetAllDepartmentPublicQuery();
     let options;
     if(isSuccess){
         options = data.map(department => {
