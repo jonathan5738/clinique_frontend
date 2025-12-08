@@ -1,0 +1,140 @@
+.header-title {
+    font-size: 1.6rem;
+    text-align: center;
+    letter-spacing: .3rem;
+    font-family: "Bowlby One SC", sans-serif;
+    font-weight: 600;
+}
+.header-container {
+    background-image: url("../../assets/img/clinique_main_entrance.png");
+    background-position: center;
+    padding: 0 var(--mobile-padding);
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+    color: var(--gray-color);
+  
+}
+
+.header-description {
+    text-align: center;
+    font-size: 2rem;
+}
+.subnavigation-container{
+    padding-left: var(--mobile-padding);
+    padding-right: var(--mobile-padding);
+}
+.subnav-title {
+    font-size: 1.4rem;
+    letter-spacing: .3rem;
+}
+.subnav-menu {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 3rem;
+}
+.subnav-item {
+    font-size: 1.8rem;
+}
+@media screen and (width >= 303px){
+    .header-title {
+        font-size: 4rem;
+    }
+
+    .header-text-content {
+        margin-top: 6rem;
+        padding: 1rem 4rem;
+    }
+    .header-container {
+        padding-left: var(--mobile-md-padding);
+        padding-right: var(--mobile-md-padding);
+    }
+
+    .subnavigation-container{
+        padding-left: var(--mobile-md-padding);
+        padding-right: var(--mobile-md-padding);
+    }
+}
+
+@media screen and (width >= 600px){
+    .header-container {
+        padding-left: var(--tablet-padding);
+        padding-right: var(--tablet-padding);
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        padding-bottom: 8rem;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    .header-description{
+        text-align: start;
+    }
+    .header-text-content{
+        order: 1;
+        border: none;
+        padding: 0;
+        width: 90%;
+    }
+    .header-title{
+        font-size: 2.6rem;
+        text-align: unset; 
+        letter-spacing: .2rem;
+    }
+    .clinique-logo {order: 2;}
+    .header-description {
+        display: block;
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (width >= 900px){
+    .header-container {
+        padding-left: var(--desk-md-padding);
+        padding-right: var(--desk-md-padding);
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        padding-bottom: 8rem;
+    }
+
+    .subnavigation-container{
+        padding-left: var(--desk-md-padding);
+        padding-right: var(--desk-md-padding);
+        margin-top: 5rem;
+    }
+    .header-title{
+        font-size: 3rem;
+    }
+    .header-description {
+        display: block;
+        font-size: 2rem;
+    }
+}
+
+@media screen and (width >= 1450px){
+    .header-container {
+        padding-left: var(--desk-lg-padding);
+        padding-right: var(--desk-lg-padding);
+
+        /* come make minor changes here */
+        padding-top: 10rem;
+        padding-bottom: 9rem;
+    }
+    .header-text-content{
+        width: 70%;
+        align-self: flex-end;
+    }
+    .header-title{
+        font-size: 8rem;
+        font-weight: 400;
+        line-height: 1;
+        margin-bottom: 0;
+    }
+    .subnavigation-container{
+        padding-left: var(--desk-lg-padding);
+        padding-right: var(--desk-lg-padding);
+    }
+}

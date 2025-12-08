@@ -1,0 +1,171 @@
+:root {
+    --dashboard-elements-radius: 10px;
+    --dashboard-gray: #f5f5f5;
+    --dashboard-side-elements-padding: 1.5rem;
+    --dashboard-dark-color: #525252;
+    --dashboard-light-dark-color: #838383;
+}
+.dashboard-container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0 20px;
+}
+
+.dashboard-navigation {
+    background-color: var(--dashboard-gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: var(--dashboard-elements-radius);
+    padding: var(--dashboard-side-elements-padding);
+    display: none;
+}
+.dashboard-aside {
+    background-color: var(--dashboard-gray);
+    border-radius: var(--dashboard-elements-radius);
+    padding: var(--dashboard-side-elements-padding);
+    display: none;
+}
+.dashboard-main {
+    background-color: var(--dashboard-gray);
+    border-radius: var(--dashboard-elements-radius);
+    padding: var(--dashboard-side-elements-padding);
+}
+.dashboard-navigation-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+.dash-menu-item {
+    font-size: 1.3rem;
+    list-style: none;
+}
+.dash-menu-item-link {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    text-decoration: none;
+}
+
+.add-button {
+    background-color: lightgreen;
+    border: transparent;
+    color: #fff;
+    padding: .5rem 1rem .5rem .5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    border-radius: 100px;
+}
+
+.add-button div {
+    background-color: rgb(113, 194, 113);
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-button:hover {
+    cursor: pointer;
+}
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  gap: 2rem;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+.doctor-container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.doctor-container-card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: var(--dashboard-elements-radius);
+}
+.doctor-container-card-title {
+    font-size: 1.6rem;
+}
+.department-container {
+    margin-bottom: 3rem;
+}
+
+.department-button-container {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.department-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #333;
+    padding: .6rem 1rem .6rem .6rem;
+    border: transparent;
+    border-radius: 100px;
+}
+.department-button:hover {
+    cursor: pointer;
+}
+.dashboard-banner-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media screen and (width >= 900px){
+    .dashboard-container {
+        grid-template-columns: 1fr 4fr 1.4fr;
+        padding: 1rem;
+        gap: 1rem;
+        margin: 0;
+    }
+    
+    .dashboard-navigation {
+        display: block;
+    }
+
+    .dashboard-aside {
+        display: block;
+    }
+
+    .dashboard-banner {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .dashboard-banner h2 {
+        font-size: 3rem;
+        opacity: .6;
+    }
+
+    .doctor-container {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 2rem;
+    }
+    .embla__slide {
+        flex: 0 0 30%;
+    }
+    .doctor-info-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+}

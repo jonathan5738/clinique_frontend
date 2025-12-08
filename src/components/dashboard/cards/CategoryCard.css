@@ -1,0 +1,8 @@
+.department-card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: var(--dashboard-elements-radius);
+}
+.department-card h3 {
+    font-size: 1.7rem;
+}

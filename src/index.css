@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+html {
+    font-size: 62.5%;
+}
+:root {
+    --nav-link-color:#585858;
+    --yellow-color: #FFCC00;
+    --yellow-dark-color: #a88805;
+    --gray-color: #DFDFDF;
+    --main-color: #6B1733;
+    --mobile-padding: 1.5rem;
+    --mobile-md-padding: 3rem;
+    --tablet-padding: 7rem;
+    --desk-md-padding: 10rem;
+
+    --desk-lg-padding: 20rem;
+    --ft-xl: 4rem;
+    --ft-400: 2.5rem;
+    --ft-300: 2rem;
+    --ft-250: 1.8rem;
+    --ft-200: 1rem;
+    --main-title-font: "Bowlby One SC", sans-serif;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-family: "Inter Variable", sans-serif;
+    font-optical-sizing: auto;
+    background-color: white;
+}
+
+p {
+    line-height: 1.4;
+    font-size: 2rem;
+}
+.blur {
+    background-color: rgba(117, 117, 117, 0.2); 
+    backdrop-filter: blur(10px);
+}
+
+.card {
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 5px 1px 20px -4px rgba(0, 0, 0, 0.226);
+}
+.card-title {
+    text-transform: capitalize;
+    letter-spacing: 3px;
+    display: inline-block;
+    padding: 1rem;
+    border-radius: 5px;
+}
+div[role="textbox"] {
+    min-height: 500px;
+}
+.blog-post p {
+    margin: 0;
+    font-size: 14px;
+}
+
+p {
+    font-size: 1.5rem;
+}
+a:hover {
+    cursor: pointer;
+}
+
+
+.blog-container  {
+    padding: 0 20px;
+}
+input, select, textarea {
+    font-family: "Inter Variable", sans-serif;
+    border: 1px solid #afafaf;
+    border-radius: 10px;
+}
+
+
+@media screen and (width >= 1000px){
+    .blog-container {
+        margin: 0 20rem;
+    }
+}

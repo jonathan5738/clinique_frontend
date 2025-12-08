@@ -1,0 +1,27 @@
+.blog-creation-container {
+    display: grid;
+    grid-template-columns: 10% 25% 65%;
+    height: 100vh;
+}
+.blog-creation-excerpt-section {
+    padding: 0 1.5rem;
+    border-right: 1px solid #c5c5c5;
+}
+.blog-creation-markdown-section {
+    padding-left: 1rem;
+}
+.blog-creation-excerpt-section-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.blog-creation-side-navigation { 
+    border-right: 1px solid #c5c5c5;
+}
+.excerpt-field {
+    width: 100%;
+    padding: 1rem;
+}
+.bodyExcerpt {
+    height: 300px;
+}

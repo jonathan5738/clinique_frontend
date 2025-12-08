@@ -1,0 +1,110 @@
+.carousel-bannier {
+    background-image: url("../../assets/img/secretaire.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 50px;
+    padding-bottom: 4rem;
+}
+.carousel-container {
+    margin: 0 20px;
+    padding: 50px 0 10px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+}
+.carousel-card {
+  background-color: transparent;
+  backdrop-filter: blur(20px); 
+  background-color: rgba(66, 66, 66, 0.185);
+  backdrop-filter: blur(20px);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 2rem;
+  color: #f1f1f1;
+}
+.carousel-main-title {
+  grid-column: 1 / -1;
+  font-size: 2.5rem;
+  color: #f1f1f1;
+  margin: 0;
+  font-family: var(--main-title-font);
+  font-weight: 400;
+}
+.event-schedule-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.event-schedule-card {
+   background-color: rgba(194, 194, 194, 0.185);
+   backdrop-filter: blur(20px);
+   display: inline-block;
+   border-radius: 5px;
+   padding: .4rem 1rem;
+   color: #f1f1f1;
+}
+.event-schedule-date, .event-schedule-time {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.event-schedule-date {
+  font-size: 1.3rem;
+}
+.event-schedule-time {
+  font-size: 1.3rem;
+}
+
+@media screen and (width >= 900px){
+  .carousel-bannier {
+    margin-top: 60px;
+    padding-bottom: 0;
+  }
+  .carousel-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 4rem;
+    margin: 0 4rem;
+    padding: 80px 0 100px 0;
+  }
+
+.carousel-main-title {
+   grid-column: 1 / -1;
+   font-size: 5rem;
+   color: #f1f1f1;
+}
+.carousel-pagination-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.carousel-card {
+  background-color: transparent;
+  backdrop-filter: blur(20px); 
+  background-color: rgba(66, 66, 66, 0.185);
+  backdrop-filter: blur(20px);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 2rem;
+  color: #f1f1f1;
+}
+.carousel-title {
+   font-size: 2rem;
+   color: #C6C6C6;
+}
+.carousel-description {
+   font-size: 1.5rem;
+}
+
+}
+
+@media screen and (width >= 1215px){
+   .carousel-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 4rem;
+    margin: 0 var(--desk-lg-padding);
+    padding: 80px 0 100px 0;
+  }
+}

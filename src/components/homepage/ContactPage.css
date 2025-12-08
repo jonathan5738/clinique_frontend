@@ -1,0 +1,150 @@
+.contact-container {
+    padding: 0 20px;
+    position: relative;
+    background-color: #c2c1c11f;
+    padding-top: 3rem;
+    padding-bottom: 16rem;
+}
+.contact-text {
+    text-align: start;
+}
+.contact-text p {
+    color: #797676;
+}
+.contact-title {
+    font-size: 3rem;
+    color: #838383;
+    font-family: var(--main-title-font); /*delete later*/
+    font-weight: 400;
+}
+.contact-form-info {
+    background-color:  #5C0120;
+    padding: 2rem;
+    border-radius: 10px;
+}
+.contact-form-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    color: #f1f1f1;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 0 20px;
+    position: relative;
+    box-shadow: 10px 10px 26px -13px rgba(65, 65, 65, 0.329);
+    top: -120px;
+}
+.contact-form-info-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.contact-form-info-item img {
+    width: 30px;
+}
+.phone-numbers {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.phone-numbers li {
+    font-size: 1.4rem;
+}
+.phone-numbers li a {
+    color: #f1f1f1;
+}
+.message-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-right: 2rem;
+    padding-top: 3rem;
+
+}
+.message-form input, 
+.message-form textarea {
+    border: none;
+    border-bottom: 2px solid #e6e6e6;
+    padding: 1rem;
+    background-color: transparent;
+    font-family: inherit;
+}
+
+.message-field {
+    width: 100%;
+    height: 150px;
+    border-radius: 0;
+}
+.personal-fields {
+    display: flex;
+    justify-content: space-between;
+}
+
+.message-reason input{
+    width: 100%;
+}
+.message-button {
+    display: inline-block;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    color: #f1f1f1;
+    background-color: #5C0120;
+    border-radius: 5px;
+    align-self: flex-start;
+}
+.message-form input {
+    border-radius: 0;
+}
+.personal-fields div {
+    width: 46%;
+}
+.personal-fields input {
+    width: 100%;
+}
+.additional-message-fields {
+    display: flex;
+    justify-content: space-between;
+}
+.additional-message-div {
+    width: 46%;
+}
+.phone-number-input, .lastname-field {
+    width: 100%;
+}
+
+@media screen and (width >= 634px){
+    .contact-form-container {
+        grid-template-columns: 1fr 2fr;
+        column-gap: 2rem;
+    }
+}
+
+@media screen and (width >= 1000px){
+    .contact-form-container {
+        grid-template-columns: 1fr 3fr;
+        column-gap: 3rem;
+        margin: 0 20rem;
+        top: -150px;
+    }
+    .contact-container {
+        padding: 0 20rem;
+        padding-top: 10rem;
+        padding-bottom: 20rem;
+    }
+    .contact-title {
+        font-size: 5rem;
+        margin: 0;
+    }
+    .contact-form-info {
+        padding-bottom: 15rem;
+    }
+    .contact-text {
+       text-align: center;
+    }
+    .phone-numbers li {
+        font-size: 1.3rem;
+    }
+}

@@ -1,0 +1,8 @@
+.doctor-schedule-items {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.doctor-schedule-item {
+    font-size: 1.2rem;
+}

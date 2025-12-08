@@ -1,0 +1,90 @@
+.event-form-container {
+    background-color: #fff;
+    width: 60%;
+    padding: 2rem;
+    border-radius: var(--dashboard-elements-radius);
+    margin-bottom: 2rem;
+}
+.event-form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.event-form-input {
+    padding: 1rem;
+    width: 100%;
+}
+.event-form-label {
+    display: block;
+    margin-bottom: .5rem;
+    font-size: 1.2rem;
+}
+.event-form-description {
+    width: 100%;
+    height: 10rem;
+    border-radius: 10px;
+    padding: 1rem;
+}
+.event-form-button {
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    border-radius: 100px;
+    border: transparent;
+}
+
+.event-form-error {
+    display: inline-block;
+    padding: .4rem 0 1rem 0;
+    color: red;
+}
+.event-schedule-fields {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.event-schedule-fields div {
+    width: 30%;
+}
+.event-schedule-fields input {
+    width: 100%;
+    padding: 1rem;
+}
+.event-schedule-label {
+    display: block;
+    margin-bottom: .4rem;
+}
+
+.add-event-schedule-button {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: transparent;
+    background-color: #333;
+    color: #fff;
+    padding: .5rem 1rem .5rem .5rem;
+    border-radius: 100px;
+    margin-top: 1rem;
+}
+.remove-event-schedule-button{
+    color: #fff;
+    background-color: red;
+    flex: 0;
+    padding: 1.1rem;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+}
+.remove-event-schedule-button:hover {
+    cursor: pointer;
+}
+.add-event-schedule-button:hover {
+    cursor: pointer;
+}

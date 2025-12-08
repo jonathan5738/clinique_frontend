@@ -1,0 +1,43 @@
+.blog-banner-container {
+    background-color: #5C0120;
+}
+.blog-banner-text {
+    margin: 0 20px;
+    color: #fff;
+    padding: 6rem 0  15rem 0;
+}
+.blog-banner-title {
+    font-size: 3rem;
+    font-family: var(--main-title-font);
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+.blog-banner-link {
+    color: #fff;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    color: var(--yellow-color);
+    text-decoration: none;
+    margin-top: 1rem;
+}
+.blog-banner-span {
+    text-transform: uppercase;
+    letter-spacing: .5rem;
+    font-size: 1rem;
+}
+@media screen and (width >= 1000px){
+    .blog-banner-text {
+        margin: 0 20rem;
+        padding: 10rem 0  15rem 0;
+    }
+    .blog-banner-title {
+        font-size: 6rem;
+    }
+    .blog-banner-link {
+        margin-top: 0;
+    }
+}

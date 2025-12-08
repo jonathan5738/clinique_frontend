@@ -1,0 +1,83 @@
+.spec-main {
+    margin: 0 20px;
+    margin-top: 80px;
+}
+.spec-container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.spec-doc-content {
+    position: relative;
+    width: 100%;
+    margin-top: 4rem;
+}
+
+.spec-doc-content img {
+    width: 100%;
+}
+.spec-main-text h3 {
+    font-size: 3rem;
+    margin: 0;
+}
+.spec-main-text p {
+    width: 80%;
+}
+.list-time {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.list-time-item {
+    font-size: 1.3rem;
+}
+.spec-para {
+    color: #333;
+}
+.spec-card {
+    border-bottom: 1px solid #333;
+}
+.spec-card:last-child {
+    border-bottom: none;
+}
+.spec-title {
+    font-size: 2rem;
+}
+.spec-title:hover {
+    cursor: pointer;
+}
+.spec-main-title {
+    font-family: var(--main-title-font);
+    font-weight: 400;
+    color: #333;
+}
+.spec-doctor-name {
+    font-size: 1.2rem;
+}
+.spec-doctor-name:hover {
+    cursor: pointer;
+}
+@media screen and (width >= 634px){
+    .spec-container {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 4rem;
+    }
+    .spec-main-text p {
+       width: 50%;
+    }
+    .spec-main-text h3 {
+        font-size: 4rem;
+    }
+}
+@media screen and (width >= 1000px){
+    .spec-main-text h3 {
+        font-size: 5rem;
+        margin: 0;
+    }
+    .spec-main {
+        margin: 0 20rem;
+        margin-top: 80px;
+    }
+    .spec-main-text p {
+       width: 50%;
+    }
+}
