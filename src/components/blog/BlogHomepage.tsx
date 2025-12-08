@@ -96,7 +96,7 @@ export default function BlogHomepage(){
 
      <section className="container related-container">
         <div className="related-img card-deco">
-            <p>Related topics <br /> Discovery</p>
+            <p>Sujets associés <br /> Découverte</p>
         </div>
 
         <div className="related-posts">
@@ -118,7 +118,7 @@ export default function BlogHomepage(){
           </div>
           
           <div className="category-img card-deco">
-             <p>Related topics <br /> Discovery</p>
+        <p>Sujets associés <br /> Découverte</p>
           </div>
      </div>
 
