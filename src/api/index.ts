@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import { type DoctorDTO, type Department, type DepartmentDTO, type Doctor, type Schedule, type BlogPost, type BlogPostPagination, type BlogPostDTO, type Event, type EventPagination } from "../types";
+import { type DoctorDTO, type Department, type DepartmentDTO, type Doctor, type Schedule, type BlogPost, type BlogPostPagination, type BlogPostDTO, type EventPagination } from "../types";
 import { createEntityAdapter, type EntityState } from "@reduxjs/toolkit";
 
 const schedulesAdapter = createEntityAdapter({

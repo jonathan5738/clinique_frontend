@@ -10,7 +10,7 @@ import DoctorEditForm from "./forms/DoctorEditForm";
 import EventForm from "./forms/EventForm";
 
 export default function MainPage(){
-    const [doctorPage, setDoctorPage] = useState<number>(1);
+    //const [doctorPage, setDoctorPage] = useState<number>(1);
     const [showDoctorForm, setShowDoctorForm] = useState<boolean>(false);
     const [showCategoryForm, setShowCategoryForm] = useState<boolean>(false);
     const [showDoctorEditForm, setShowDoctorEditForm] = useState<{show: boolean; doctorId: number, departmentName: string}>({
@@ -48,7 +48,7 @@ export default function MainPage(){
         isSuccess: isDoctorSuccess,
         isFetching: isDoctorFetching,
         isLoading: isDoctorLoading,
-    } = useGetAllDoctorInfoQuery(doctorPage);
+    } = useGetAllDoctorInfoQuery(1); // change this later
 
     let content;
     if(isDepartmentSuccess){

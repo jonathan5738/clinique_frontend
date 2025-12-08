@@ -36,7 +36,7 @@ export function BlogCreationPage(){
     const onSubmit: SubmitHandler<PostExcerpt> = (data) => {
         console.log(imagesExcerpt)
         if(selectedDepartment > 0){
-
+            console.log(data);
         } else {
             setIsDepartmentSelected(false);
         }

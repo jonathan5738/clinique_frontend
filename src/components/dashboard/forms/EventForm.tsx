@@ -41,7 +41,7 @@ const eventSchema = z.object({
 });
 
 export default function EventForm(){
-    const {data, isSuccess, isFetching, isLoading, isError} = useGetAllDepartmentPublicQuery();
+    const {data, isSuccess, isFetching, isLoading} = useGetAllDepartmentPublicQuery();
     const [selectedDepartment, setSelectedDepartment] = useState<number>(0);
     const [isDepartmentSelected, setIsDepartmentSelected] = useState<boolean>(true);
 

@@ -8,11 +8,11 @@ import { useGSAP } from "@gsap/react";
 import {gsap} from "gsap";
 
 function Carousel (){
-    const [page, setPage] = useState<number>(1);    
-    const {data: events, isFetching, isLoading, isSuccess} = useGetAllEventsQuery(page);
-    const handlePaginationClick = (e: React.ChangeEvent<unknown>, value: number) => {
+    //const [page, setPage] = useState<number>(1);    
+    const {data: events, isFetching, isLoading, isSuccess} = useGetAllEventsQuery(1); // change this latter
+    /*const handlePaginationClick = (e: React.ChangeEvent<unknown>, value: number) => {
         setPage(value)
-    }
+    }*/
     const container = useRef<HTMLDivElement | null>(null);
     let yPos = 50;
     useGSAP(() => {

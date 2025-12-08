@@ -1,5 +1,5 @@
 import "./Specialities.css"
-import { useGetAllDepartmentPublicQuery, type DoctorInfo } from "../../api"
+import { useGetAllDepartmentPublicQuery } from "../../api"
 import {  useRef, useState } from "react";
 import Group11 from "../../assets/img/Group 11.jpg";
 import { useGSAP } from "@gsap/react";
