@@ -17,47 +17,55 @@ import AdminPage from "./components/dashboard/AdminPage";
 import { ToastContainer } from "react-tiny-toast";
 import MainPage from "./components/dashboard/MainPage";
 import { BlogCreationPage } from "./components/dashboard/BlogCreationPage";
+import App from "./App";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText)
 const element = document.getElementById("root")!;
 const router = createBrowserRouter([
     {
         path: "/",
-        Component: Homepage
+        Component: App,
+        children: [
+            {
+                index: true,
+                Component: Homepage
+            },
+            {
+                path: "dashboard",
+                Component: AdminPage,
+                children: [
+                    {
+                        index: true,
+                        Component: MainPage
+                    },
+                    {
+                        path: "blogs",
+                        children: [
+                            {path: "posts/new", Component: BlogCreationPage}
+                        ]
+                    },
+                ]
+            },
+
+            {
+                path:"blog",
+                Component: BlogPost,
+                children: [
+                    {
+                        index: true,
+                        Component: BlogHomepage
+                    },
+                    {
+                        path: ":blogId",
+                        Component: BlogPostDetail
+                    }
+                ]
+           }
+        ]
     },
     {
         path: "/testing/:doctorId",
         Component: Dashboard
-    },
-    {
-        path: "/dashboard",
-        Component: AdminPage,
-        children: [
-            {
-                index: true,
-                Component: MainPage
-            }
-        ]
-    },
-    {
-        path: "/dashboard/blogs",
-        children: [
-            {path: "posts/new", Component: BlogCreationPage}
-        ]
-    },
-    {
-        path:"/blog",
-        Component: BlogPost,
-        children: [
-            {
-                index: true,
-                Component: BlogHomepage
-            },
-            {
-                path: ":blogId",
-                Component: BlogPostDetail
-            }
-        ]
     }
 ]);
 
