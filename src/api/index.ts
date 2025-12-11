@@ -70,9 +70,10 @@ export interface DepartmentPublicInfo {
     name: string;
     doctors: DoctorInfo[]
 }
+const url = "https://whatever-app-azurelernen-dev-001-cje7gbfkcyf3gdhn.spaincentral-01.azurewebsites.net/api";
 export const apiSlice = createApi({
     reducerPath: "api",
-    baseQuery: fetchBaseQuery({baseUrl: "http://localhost:5177/api"}),
+    baseQuery: fetchBaseQuery({baseUrl: url}),
     tagTypes: ["Department", "Doctor", "Event"],
     endpoints: builder => ({
         getAllDepartment: builder.query<Department[], void>({

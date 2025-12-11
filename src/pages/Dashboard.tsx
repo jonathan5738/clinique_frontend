@@ -6,4 +6,4 @@ export default function Dashboard () {
            <DoctorForm/>
         </div>
     )
-}
+};
