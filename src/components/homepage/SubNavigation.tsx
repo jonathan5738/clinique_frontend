@@ -29,6 +29,7 @@ function SubNavigation (){
                 <li className="subnav-item"><a href="#">Notre histoire</a></li>
                 <li className="subnav-item"><a href="#">Evenements</a></li>
                 <li className="subnav-item"><Link to="/blog">Notre Blog</Link></li>
+                <li className="subnav-item"><Link to="/dashboard">Dashboard</Link></li>
             </ul>
         </div>
     )
