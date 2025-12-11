@@ -3,6 +3,7 @@ import {gsap} from "gsap"
 import { SplitText } from "gsap/SplitText"
 import "./BlogBanner.css"
 import { FiArrowRight } from "react-icons/fi"
+import { Link } from "react-router"
 export default function BlogBanner(){
     useGSAP(() => {
         const title = SplitText.create(".blog-banner-title", {type: "lines"});
@@ -16,7 +17,7 @@ export default function BlogBanner(){
             <div className="blog-banner-text">
                 <p className="blog-banner-span">pour obtenir davantage de conseils médicaux.</p>
                 <h2 className="blog-banner-title">CONSULTER <br /> NOTRE BLOG</h2>
-                <a href="/blog" className="blog-banner-link">Visiter notre blog <FiArrowRight size={20}/></a>
+                <Link to="/blog" className="blog-banner-link">Visiter notre blog <FiArrowRight size={20}/></Link>
             </div>
         </div>
     )

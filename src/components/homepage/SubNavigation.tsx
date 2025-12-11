@@ -1,6 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import { gsap} from "gsap";
 import { useRef } from "react";
+import { Link } from "react-router";
 
 
 function SubNavigation (){
@@ -27,7 +28,7 @@ function SubNavigation (){
                 <li className="subnav-item"><a href="#">Nous contactez</a></li>
                 <li className="subnav-item"><a href="#">Notre histoire</a></li>
                 <li className="subnav-item"><a href="#">Evenements</a></li>
-                <li className="subnav-item"><a href="/blog">Notre Blog</a></li>
+                <li className="subnav-item"><Link to="/blog">Notre Blog</Link></li>
             </ul>
         </div>
     )
