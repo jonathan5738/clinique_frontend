@@ -1,5 +1,5 @@
 .blog-post {
-    margin: 0 40rem;
+    margin: 0 20px;
 }
 img {
     width: 100%;
@@ -7,4 +7,10 @@ img {
 }
 p {
     line-height: 1.7;
+}
+
+@media screen and (width >= 1000px){
+    .blog-post {
+        margin: 0 40rem;
+    }
 }
