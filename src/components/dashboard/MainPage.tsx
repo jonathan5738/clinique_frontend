@@ -1,6 +1,6 @@
 import { useGetAllDepartmentPublicQuery, useGetAllDoctorInfoQuery } from "../../api"
 import { useCallback, useState } from "react";
-import { FiChevronLeft, FiChevronRight, FiPlus } from "react-icons/fi";
+import { FiBookOpen, FiChevronLeft, FiChevronRight, FiEdit, FiGrid, FiHome, FiLayers, FiPlus } from "react-icons/fi";
 import DoctorForm from "./forms/DoctorForm";
 import DepartmentForm from "./forms/DepartmentForm";
 import CategoryCard from "./cards/CategoryCard";
@@ -8,6 +8,10 @@ import useEmblaCarousel from "embla-carousel-react";
 import DoctorInfoCard from "./cards/DoctorInfoCard";
 import DoctorEditForm from "./forms/DoctorEditForm";
 import EventForm from "./forms/EventForm";
+import { Link } from "react-router";
+import ConnectedUserCard from "./cards/ConnectedUserCard";
+import MessageNotificationCard from "./cards/MessageNoticationCard";
+import EventListCard from "./cards/EventListCard";
 
 export default function MainPage(){
     //const [doctorPage, setDoctorPage] = useState<number>(1);
@@ -71,6 +75,23 @@ export default function MainPage(){
         doctorContent = <p>loading...</p>
     }
     return (
+        <div className="dashboard-container">
+         <div className="dashboard-navigation">
+             <div>
+                <ul className="dashboard-navigation-menu">
+                    <h3>NAVIGATION</h3>
+                    <li className="dash-menu-item"><Link to="/dashboard" className="dash-menu-item-link"><FiGrid className="menu-item-icon"/>Dashboard</Link></li>
+                    <li className="dash-menu-item"><Link to="/" className="dash-menu-item-link"><FiHome className="menu-item-icon"/>Acceuil</Link></li>
+                    <li className="dash-menu-item"><Link to="/blog/posts" className="dash-menu-item-link"><FiBookOpen className="menu-item-icon"/>Visite le blog</Link></li>
+                </ul>
+                <ul className="dashboard-navigation-menu">
+                    <h3>GESTION DU BLOG</h3>
+                    <li className="dash-menu-item"><Link className="dash-menu-item-link" to="/dashboard/blogs/posts/new"><FiEdit className="menu-item-icon"/> Ecrire un article</Link></li>
+                    <li className="dash-menu-item"><a className="dash-menu-item-link" href="#"><FiLayers className="menu-item-icon"/> Gestion du blog</a></li>
+                </ul>
+             </div>
+         </div>
+        <div className="dashboard-main">
         <div>
             <div className="dashboard-banner">
                 <h2>Dashboard</h2>
@@ -139,6 +160,14 @@ export default function MainPage(){
                     departmentName={showDoctorEditForm.departmentName}/>)}
 
             </div>
+        </div>
+        </div>
+
+        <div className="dashboard-aside">
+            <ConnectedUserCard/>
+            <MessageNotificationCard/>
+            <EventListCard/>
+        </div>
         </div>
     )
 }
