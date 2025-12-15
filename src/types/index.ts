@@ -129,6 +129,31 @@ export interface BlogPostPagination {
   hasPrev: boolean;
 }
 
+export interface BlogPostExcerptPagination {
+   data: {
+   id: number; 
+   department: {id: number; name: string;}, 
+   excerptTitle: string; 
+   excerptBody: string; 
+   excerptImage: string;
+   author: string;
+   }[];
+   totalPage: number;
+   hasNext: boolean;
+   hasPrev: boolean;
+}
+
+export interface BlogPostExcerpts {
+  id: number;
+  name: string;
+  posts: {
+      id: number;
+      excerptTitle: string;
+      excerptBody: string;
+      author: string;
+      excerptImage: string
+  }[]
+}
 export type AppStore = typeof store;
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

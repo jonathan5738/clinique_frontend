@@ -8,9 +8,22 @@ import "./BlogHomepage.css"
 import {gsap} from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import { useGetBlogPostByDepartmentQuery, useGetFeaturedBlogPostQuery } from "../../api"
 
 export default function BlogHomepage(){
+    //const [page, setPage] = useState<number>(1); change this
     const scope = useRef<HTMLDivElement | null>(null);
+    const {data: featuredPosts,
+         isSuccess: isFeaturedPostSuccess, 
+         isLoading: isFeaturedPostLoading, 
+         isFetching: isFeaturedPostFetching} = useGetFeaturedBlogPostQuery(1);
+
+    const {
+        data: departmentPosts,
+        isSuccess: isDepartmentPostsSuccess,
+        isLoading: isDepartmentPostsLoading,
+        isFetching: isDepartmentPostsFetching
+    } = useGetBlogPostByDepartmentQuery();
     useGSAP(() => {
         const headerTimeline = gsap.timeline({
             defaults: {y: 40, opacity: 0}
@@ -71,6 +84,47 @@ export default function BlogHomepage(){
 
     }, {scope})
 
+    let featuredPostCards;
+    if(isFeaturedPostSuccess){
+        featuredPostCards = featuredPosts.data.map(post => {
+            return (
+                <FeatureArticleCard id={post.id}
+                 excerptBody={post.excerptBody}
+                 excerptTitle={post.excerptTitle}
+                 excerptImage={post.excerptImage}
+                 speciality={post.department.name}
+               />
+            )
+        })
+    } else if(isFeaturedPostFetching || isFeaturedPostLoading){
+        featuredPostCards = <p>loading...</p>
+    }
+
+    let departmentPostsContainer;
+    if(isDepartmentPostsSuccess){
+        departmentPostsContainer = departmentPosts.map(d => {
+            return (
+
+            <div className="container post-excerpt-container" key={d.id}>
+                <div className="post-excerpt-card-img card-deco">
+                    <p>{d.name}</p>
+                </div>
+                <div className="post-excerpt-container-grid">
+                    {d.posts.map(post => {
+                        return (
+                            <PostExcerptCard id={post.id}
+                              excerptTitle={post.excerptTitle}
+                              excerptBody={post.excerptBody}
+                              excerptImage={post.excerptImage}/>
+                        )
+                    })}
+                </div>
+            </div>
+            )
+        })
+    } else if(isDepartmentPostsFetching || isDepartmentPostsLoading){
+        departmentPostsContainer = <p>loading...</p>
+    }
     return (
      <div className="blog-homepage" ref={scope}>
         <header className="container blog-header">
@@ -88,9 +142,7 @@ export default function BlogHomepage(){
             </section>
             <aside className="recent-aside-container">
                 <h3>Features posts</h3>
-                <FeatureArticleCard/> 
-                <FeatureArticleCard/>
-                <FeatureArticleCard/>
+                {featuredPostCards}
             </aside>
        </section>
 
@@ -132,17 +184,7 @@ export default function BlogHomepage(){
             </div>
         </div>
 
-            <div className="container post-excerpt-container">
-                <div className="post-excerpt-card-img card-deco">
-                    <p>Pediatrie</p>
-                </div>
-                <div className="post-excerpt-container-grid">
-                    <PostExcerptCard/>
-                    <PostExcerptCard/>
-                    <PostExcerptCard/>
-                    <PostExcerptCard/>
-                </div>
-            </div>
+            {departmentPostsContainer}
         </div>
     )
 }

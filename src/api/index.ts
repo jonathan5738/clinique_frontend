@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import { type DoctorDTO, type Department, type DepartmentDTO, type Doctor, type Schedule, type BlogPost, type BlogPostPagination, type BlogPostDTO, type EventPagination } from "../types";
+import { type DoctorDTO, type Department, type DepartmentDTO, type Doctor, type Schedule, type BlogPost, type BlogPostPagination, type EventPagination, type BlogPostExcerptPagination, type BlogPostExcerpts } from "../types";
 import { createEntityAdapter, type EntityState } from "@reduxjs/toolkit";
 
 const schedulesAdapter = createEntityAdapter({
@@ -175,14 +175,20 @@ export const apiSlice = createApi({
             invalidatesTags: (_result, _error, _arg) => [{type: "Event", id: "LIST"}]
         }),
 
-        addNewBlogPost: builder.mutation<void, BlogPostDTO>({
+        addNewBlogPost: builder.mutation<void, FormData>({
             query: (data) => ({url: "/BlogPost", method: "POST", body: data})
+        }),
+        getBlogPostByDepartment: builder.query<BlogPostExcerpts[], void>({
+            query: () => "/Department/posts"
         }),
         getOneBlogPost: builder.query<BlogPost, string>({
             query: (blogId) => `/BlogPost/${blogId}`
         }),
         getAllBlogPost: builder.query<BlogPostPagination, number>({
             query: (page) => `/BlogPost?page=${page}`
+        }),
+        getFeaturedBlogPost: builder.query<BlogPostExcerptPagination, number>({
+            query: (page) => `/BlogPost/FeaturedPosts?page=${page}`
         }),
         getAllEvents: builder.query<EventPagination, number>({
             query: (page) => `/Event?page=${page}`,
@@ -207,7 +213,9 @@ export const {
     useGetAllEventsQuery,
     useGetAllDepartmentPublicQuery,
     useGetAllDoctorInfoQuery,
+    useGetFeaturedBlogPostQuery,
     useDeleteEventMutation,
+    useGetBlogPostByDepartmentQuery,
 
     useAddNewDoctorMutation,
     useGetAllSchedulesQuery,

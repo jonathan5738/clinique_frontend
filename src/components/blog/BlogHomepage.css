@@ -71,8 +71,8 @@
             font-size: .7rem;
             margin-bottom: 1rem;
         }
-        .article-hor-card-img {
-            background-color: var(--img-color);
+        .article-hor-card-img img {
+            width: 100%;
         }
         
         .article-hor-card-title {
@@ -159,6 +159,10 @@
             background: var(--img-color);
             width: 100%;
             height: 150px; /* change this later */
+        }
+        .post-excerpt-img img {
+            width: 100% !important;
+            height: 150px;
         }
         .post-excerpt-title {
             font-size: var(--title-mobile-size);

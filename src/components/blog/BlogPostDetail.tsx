@@ -2,7 +2,7 @@ import Markdown from "react-markdown";
 import { useParams } from "react-router";
 import remarkGfm from "remark-gfm";
 import { useGetOneBlogPostQuery } from "../../api";
-
+import "./BlogPostDetail.css";
 
 function BlogPostDetail(){
     const {blogId} = useParams();

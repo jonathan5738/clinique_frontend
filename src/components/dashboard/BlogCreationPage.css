@@ -15,6 +15,9 @@
     flex-direction: column;
     gap: 2rem;
 }
+.blog-creation-excerpt-section-content label {
+    font-size: 1.1rem;
+}
 .blog-creation-side-navigation { 
     border-right: 1px solid #c5c5c5;
 }
@@ -24,4 +27,17 @@
 }
 .bodyExcerpt {
     height: 300px;
+}
+.features-post-container {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+#features-post {
+    width: 20px;
+    height: 20px;
+}
+
+label[for="features-post"] {
+    font-size: 1.1rem;
 }

@@ -5,11 +5,13 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import SpecialitySelection from "../../utils/SpecialitySelection";
+import { useAddNewBlogPostMutation } from "../../api";
 
 interface PostExcerpt {
     titleExcerpt: string;
     bodyExcerpt: string;
     authorName: string;
+    isFeaturedPost: boolean;
 }
 const postExcerptSchema = z.object({
     titleExcerpt: z.string()
@@ -23,20 +25,33 @@ const postExcerptSchema = z.object({
             .min(3, "Veuillez entrer un nom plus long, s’il vous plaît")
             .max(30, "Veuillez entrer un nom plus court, s’il vous plaît")
             .trim()
-            .toLowerCase()
+            .toLowerCase(),
+    isFeaturedPost: z.boolean()
 })
 export function BlogCreationPage(){
     const [selectedDepartment, setSelectedDepartment] = useState<number>(0);
     const [isDepartmentSelected, setIsDepartmentSelected] = useState<boolean>(true);
     const [imagesExcerpt, setImagesExcerpt] = useState<FileList | null>(null);
+    const [markdownContent, setMarkdownContent] = useState<string>("");
 
     const {register, handleSubmit, formState: {errors}} = useForm<PostExcerpt>({
         resolver: zodResolver(postExcerptSchema)
     });
+
+    const [addNewBlogPost] = useAddNewBlogPostMutation();
     const onSubmit: SubmitHandler<PostExcerpt> = (data) => {
-        console.log(imagesExcerpt)
         if(selectedDepartment > 0){
-            console.log(data);
+            const formData = new FormData();
+            formData.append("ExcerptBody", data.bodyExcerpt);
+            formData.append("ExcerptTitle", data.titleExcerpt);
+            formData.append("DepartmentId", selectedDepartment.toString());
+            if (imagesExcerpt && imagesExcerpt.length > 0) {
+                formData.append("ExcerptImage", imagesExcerpt[0]);
+            }
+            formData.append("Content", markdownContent);
+            formData.append("IsFeaturedPost", data.isFeaturedPost.toString());
+            formData.append("Author", data.authorName);
+            addNewBlogPost(formData);
         } else {
             setIsDepartmentSelected(false);
         }
@@ -70,6 +85,10 @@ export function BlogCreationPage(){
                         {errors.authorName && <span>{errors.authorName.message}</span>}
                     </div>
 
+                    <div className="features-post-container">
+                        <input id="features-post" type="checkbox"  {...register("isFeaturedPost")}/>
+                        <label htmlFor="features-post">article à la une</label>
+                    </div>
                     <SpecialitySelection 
                        setIsDepartmentSelected={setIsDepartmentSelected}
                        setSelectedDepartment={setSelectedDepartment}
@@ -79,7 +98,7 @@ export function BlogCreationPage(){
                 </div>
                 <div className="blog-creation-markdown-section">
                     <h2>Create a nouvel article</h2>
-                    <AddPostForm/>
+                    <AddPostForm setMarkdownContent={setMarkdownContent}/>
                 </div>
             </div>
             {/*<button style={{padding: "2rem"}}>submit</button>*/}

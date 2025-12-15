@@ -1,15 +1,21 @@
-export default function PostExcerptCard() {
+import { Link } from "react-router";
+
+export default function PostExcerptCard({
+    id, excerptTitle, excerptBody, excerptImage
+}: {id: number; excerptTitle: string; excerptBody: string; excerptImage: string;}) {
     return (
-        <div className="post-excerpt-card">
-            <div className="post-excerpt-img"></div>
+        <div className="post-excerpt-card" key={id}>
+            <div className="post-excerpt-img">
+                <img src={excerptImage} alt="" />
+            </div>
             <div className="post-excerpt-text">
-                <h2 className="post-excerpt-title">Lorem ipsum dolor sit amet</h2>
+                <h2 className="post-excerpt-title">{excerptTitle}</h2>
                 <span className="post-excerpt-sub">pediatry</span>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quam eum aspernatur 
-                            ratione, doloribus dolorum nihil facere officiis! 
-                            Possimus </p>
-                <a href="#" className="post-excerpt-link">read more</a>
+                <p>{excerptBody}</p>
+                <Link to={`/blog/${id}`} className="post-excerpt-link">read more</Link>
                 </div>
         </div>
     )
 }
+
+
