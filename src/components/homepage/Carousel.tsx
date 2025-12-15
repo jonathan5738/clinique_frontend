@@ -1,15 +1,30 @@
 
 import "./Carousel.css";
-import { useRef } from "react";
+import { useRef, useState, type JSX } from "react";
 import { useGetAllEventsQuery } from "../../api";
 import dayjs from "dayjs";
 import { PiCalendarDots, PiTimer} from "react-icons/pi";
 import { useGSAP } from "@gsap/react";
 import {gsap} from "gsap";
 
+
+function ShowBubble ({totalPage, setPage}: 
+    {totalPage: number | undefined; setPage: React.Dispatch<React.SetStateAction<number>>}){
+    const bubbles: JSX.Element[] = [ ];
+    if(totalPage){
+        for(let i = 0; i < totalPage; i++){
+            bubbles.push(<div onClick={() => setPage(i+1)} className="bubble"></div>)
+        }
+    }
+    return (
+       <div className="bubble-container">
+         {totalPage && bubbles}
+       </div>
+    )
+}
 function Carousel (){
-    //const [page, setPage] = useState<number>(1);    
-    const {data: events, isFetching, isLoading, isSuccess} = useGetAllEventsQuery(1); // change this latter
+    const [page, setPage] = useState<number>(1);    
+    const {data: events, isFetching, isLoading, isSuccess} = useGetAllEventsQuery(page); // change this latter
     /*const handlePaginationClick = (e: React.ChangeEvent<unknown>, value: number) => {
         setPage(value)
     }*/
@@ -70,6 +85,7 @@ function Carousel (){
             page={page}
            onChange={handlePaginationClick} color="primary"/>
         )}*/}
+          <ShowBubble totalPage={events?.totalPage} setPage={setPage}/>
         </div>
       </div>
     )

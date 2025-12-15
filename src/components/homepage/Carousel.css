@@ -55,7 +55,22 @@
 .event-schedule-time {
   font-size: 1.3rem;
 }
-
+.bubble-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.bubble {
+   width: 20px;
+   height: 20px;
+   background-color: #f1f1f1;
+   border-radius: 100px;
+}
+.bubble:hover {
+  cursor: pointer;
+}
 @media screen and (width >= 900px){
   .carousel-bannier {
     margin-top: 60px;
@@ -66,7 +81,7 @@
     grid-template-columns: repeat(3, 1fr);
     column-gap: 4rem;
     margin: 0 4rem;
-    padding: 80px 0 100px 0;
+    padding: 80px 0 40px 0;
   }
 
 .carousel-main-title {
@@ -96,7 +111,9 @@
 .carousel-description {
    font-size: 1.5rem;
 }
-
+.bubble-container {
+  padding-bottom: 100px;
+}
 }
 
 @media screen and (width >= 1215px){
@@ -105,6 +122,6 @@
     grid-template-columns: repeat(3, 1fr);
     column-gap: 4rem;
     margin: 0 var(--desk-lg-padding);
-    padding: 80px 0 100px 0;
+    padding: 80px 0 40px 0;
   }
 }

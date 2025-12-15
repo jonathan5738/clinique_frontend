@@ -64,10 +64,15 @@ export default function EventForm(){
             )
         })
     }
-    const onSubmit: SubmitHandler<Input> = (data) => {
+    const onSubmit: SubmitHandler<Input> = async (data) => {
         if(selectedDepartment > 0){
             const formData = {...data, departmentId: selectedDepartment};
-            addNewEvent(formData);
+            console.log(formData);
+            try{
+                await addNewEvent(formData).unwrap();
+            } catch(err){
+                console.log(err);
+            }
             setValue("description", "");
             setValue("title", "");
             setValue("personInCharge", "");
