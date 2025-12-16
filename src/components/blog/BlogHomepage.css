@@ -106,7 +106,7 @@
             width: 100%;
         }
         .article-related-card-text {
-            align-self: center;
+            /*align-self: center;*/
         }
         .article-related-card-title {
             font-size: var(--title-mobile-size);
