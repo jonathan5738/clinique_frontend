@@ -1,8 +1,16 @@
 import { Link } from "react-router";
 
 export default function PostExcerptCard({
-    id, excerptTitle, excerptBody, excerptImage
-}: {id: number; excerptTitle: string; excerptBody: string; excerptImage: string;}) {
+    id,
+    excerptTitle, 
+    excerptBody,
+    excerptImage
+}: {
+    id: number;
+     excerptTitle: string; 
+     excerptBody: string; 
+     excerptImage: string;
+}) {
     return (
         <div className="post-excerpt-card" key={id}>
             <div className="post-excerpt-img">
