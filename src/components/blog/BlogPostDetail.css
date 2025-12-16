@@ -5,17 +5,31 @@ img {
     width: 100%;
     margin-top: 4rem;
 }
+.blog-post h1 {
+    text-align: start;
+    font-size: 4rem;
+}
+.blog-post h2 {
+    font-size: 2rem;
+}
+.blog-post h3 {
+    margin-top: 3rem;
+    font-size: 1.5rem;
+}
 .blog-post h1, .blog-post h2, .blog-post h3 {
-    font-family: var(--main-title-font);
     font-weight: 300;
 }
 .blog-post p {
     line-height: 1.7;
-    font-family: serif;
+    color: #434343;
 }
 
 @media screen and (width >= 1000px){
     .blog-post {
-        margin: 0 40rem;
+        margin: 0 42rem;
+    }
+    .blog-post h1 {
+        text-align: start;
+        font-size: 7rem;
     }
 }

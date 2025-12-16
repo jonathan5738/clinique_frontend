@@ -17,7 +17,7 @@ export default function PostExcerptCard({
                 <img src={excerptImage} alt="" />
             </div>
             <div className="post-excerpt-text">
-                <h2 className="post-excerpt-title">{excerptTitle}</h2>
+                <h2 className="post-excerpt-title"><Link to={`/blog/${id}`}>{excerptTitle}</Link></h2>
                 <span className="post-excerpt-sub">pediatry</span>
                 <p>{excerptBody}</p>
                 <Link to={`/blog/${id}`} className="post-excerpt-link">read more</Link>

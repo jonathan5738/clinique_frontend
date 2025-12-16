@@ -7,11 +7,28 @@ import "./BlogHomepage.css"
 
 import {gsap} from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
-import { useGetBlogPostByDepartmentQuery, useGetFeaturedBlogPostQuery } from "../../api"
+import { useEffect, useRef, useState } from "react";
+import { useGetAllDepartmentPublicQuery, useGetBlogPostByDepartmentQuery, useGetFeaturedBlogPostQuery } from "../../api"
 
 export default function BlogHomepage(){
     //const [page, setPage] = useState<number>(1); change this
+    const [isDesktop, setIsDesktop] = useState<boolean>(false);
+    const [isMobile, setIsMobile] = useState<boolean>(false);
+
+    useEffect(() => {
+        let media;
+        media = window.matchMedia("(min-width: 935px)");
+        setIsDesktop(media.matches);
+        if(!isDesktop){
+            media = window.matchMedia("(max-width: 500px)");
+            setIsMobile(media.matches);
+        }
+    }, [])
+    if(isDesktop){
+        console.log("desktop")
+    } else if(isMobile){
+        console.log("mobile");
+    }
     const scope = useRef<HTMLDivElement | null>(null);
     const {data: featuredPosts,
          isSuccess: isFeaturedPostSuccess, 
@@ -24,6 +41,15 @@ export default function BlogHomepage(){
         isLoading: isDepartmentPostsLoading,
         isFetching: isDepartmentPostsFetching
     } = useGetBlogPostByDepartmentQuery();
+
+    const  {
+        data: departments,
+        isSuccess: isDepartmentsSuccess,
+        isFetching: isDepartmentsFetching,
+        isLoading: isDepartmentsLoading
+    } = useGetAllDepartmentPublicQuery();
+
+    console.log(isDesktop)
     useGSAP(() => {
         const headerTimeline = gsap.timeline({
             defaults: {y: 40, opacity: 0}
@@ -102,28 +128,96 @@ export default function BlogHomepage(){
 
     let departmentPostsContainer;
     if(isDepartmentPostsSuccess){
-        departmentPostsContainer = departmentPosts.map(d => {
+        departmentPostsContainer = departmentPosts.map((d, index) => {
             return (
+            <div key={d.id}>
+            {isDesktop && (
+              <>
+             {d.posts.length > 0 && index % 2 === 0 && (
+                <div className="container post-excerpt-container" key={d.id}>
+                    <div className="post-excerpt-card-img card-deco" style={{
+                        marginRight: "2rem"
+                    }}>
+                        <p>{d.name}</p>
+                    </div>
+                    <div className="post-excerpt-container-grid" style={{ 
+                        paddingLeft: "2rem",
+                        borderLeftWidth: "1px",
+                        borderLeftStyle: "solid",
+                        borderColor: "#333"
+                    }}>
+                        {d.posts.map(post => {
+                            return (
+                                <PostExcerptCard id={post.id}
+                                excerptTitle={post.excerptTitle}
+                                excerptBody={post.excerptBody}
+                                excerptImage={post.excerptImage}/>
+                            )
+                        })}
+                    </div>
+                </div>
+              )}
+              {d.posts.length > 0 && index % 2 === 1 && (
 
-            <div className="container post-excerpt-container" key={d.id}>
-                <div className="post-excerpt-card-img card-deco">
-                    <p>{d.name}</p>
+                <div className="container post-excerpt-container" key={d.id}>
+                    <div className="post-excerpt-container-grid" style={{
+                        paddingRight: "2rem",
+                        borderRightWidth: "1px",
+                        borderRightStyle: "solid",
+                        borderRightColor: "#333"
+                    }}>
+                        {d.posts.map(post => {
+                            return (
+                                <PostExcerptCard id={post.id}
+                                excerptTitle={post.excerptTitle}
+                                excerptBody={post.excerptBody}
+                                excerptImage={post.excerptImage}/>
+                            )
+                        })}
+                    </div>
+                    <div className="post-excerpt-card-img card-deco" style={{
+                        marginLeft: "2rem"
+                    }}>
+                        <p>{d.name}</p>
+                    </div>
                 </div>
-                <div className="post-excerpt-container-grid">
-                    {d.posts.map(post => {
-                        return (
-                            <PostExcerptCard id={post.id}
-                              excerptTitle={post.excerptTitle}
-                              excerptBody={post.excerptBody}
-                              excerptImage={post.excerptImage}/>
-                        )
-                    })}
+              )}
+              </>
+             )}
+
+             {isMobile  && !isDesktop && d.posts.length > 0 && (
+                <div className="container post-excerpt-container" key={d.id}>
+                    <div className="post-excerpt-card-img card-deco">
+                        <p>{d.name}</p>
+                    </div>
+                    <div className="post-excerpt-container-grid">
+                        {d.posts.map(post => {
+                            return (
+                                <PostExcerptCard id={post.id}
+                                excerptTitle={post.excerptTitle}
+                                excerptBody={post.excerptBody}
+                                excerptImage={post.excerptImage}/>
+                            )
+                        })}
+                    </div>
                 </div>
-            </div>
+             )}
+             </div>
             )
         })
     } else if(isDepartmentPostsFetching || isDepartmentPostsLoading){
         departmentPostsContainer = <p>loading...</p>
+    }
+
+    let departmentLists;
+    if(isDepartmentsSuccess){
+        departmentLists = departments.map(d => {
+            return (
+                <CategoryCard id={d.id} categoryName={d.name}/>
+            )
+        })
+    } else if(isDepartmentsFetching || isDepartmentsLoading){
+        departmentLists = <p>loading...</p>
     }
     return (
      <div className="blog-homepage" ref={scope}>
@@ -160,17 +254,11 @@ export default function BlogHomepage(){
 
      <div className="container category-container">
           <div className="category-list">
-            <CategoryCard categoryName="Cardiologie"/>
-            <CategoryCard categoryName="Pediatrie"/>
-            <CategoryCard categoryName="Medecine generale"/>
-            <CategoryCard categoryName="Ophtamologie"/>
-            <CategoryCard categoryName="Neurologie"/>
-            <CategoryCard categoryName="Gynecologie"/>
-            <CategoryCard categoryName="Conseilles de sage femme"/>
+            {departmentLists}
           </div>
           
           <div className="category-img card-deco">
-        <p>Sujets associés <br /> Découverte</p>
+             <p>Sujets associés <br /> Découverte</p>
           </div>
      </div>
 

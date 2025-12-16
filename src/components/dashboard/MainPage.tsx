@@ -82,7 +82,7 @@ export default function MainPage(){
                     <h3>NAVIGATION</h3>
                     <li className="dash-menu-item"><Link to="/dashboard" className="dash-menu-item-link"><FiGrid className="menu-item-icon"/>Dashboard</Link></li>
                     <li className="dash-menu-item"><Link to="/" className="dash-menu-item-link"><FiHome className="menu-item-icon"/>Acceuil</Link></li>
-                    <li className="dash-menu-item"><Link to="/blog/posts" className="dash-menu-item-link"><FiBookOpen className="menu-item-icon"/>Visite le blog</Link></li>
+                    <li className="dash-menu-item"><Link to="/blog" className="dash-menu-item-link"><FiBookOpen className="menu-item-icon"/>Visite le blog</Link></li>
                 </ul>
                 <ul className="dashboard-navigation-menu">
                     <h3>GESTION DU BLOG</h3>
