@@ -18,16 +18,13 @@ function ShowBubble ({totalPage, setPage}:
     }
     return (
        <div className="bubble-container">
-         {totalPage && bubbles}
+         {totalPage && totalPage > 1 && bubbles}
        </div>
     )
 }
 function Carousel (){
     const [page, setPage] = useState<number>(1);    
     const {data: events, isFetching, isLoading, isSuccess} = useGetAllEventsQuery(page); // change this latter
-    /*const handlePaginationClick = (e: React.ChangeEvent<unknown>, value: number) => {
-        setPage(value)
-    }*/
     const container = useRef<HTMLDivElement | null>(null);
     let yPos = 50;
     useGSAP(() => {
@@ -80,11 +77,6 @@ function Carousel (){
         </>
        )}
         <div className="carousel-pagination-container"> 
-        {/*{isSuccess && events.totalPage > 1 && (
-          <Pagination className="carousel-pagination" count={events?.totalPage}
-            page={page}
-           onChange={handlePaginationClick} color="primary"/>
-        )}*/}
           <ShowBubble totalPage={events?.totalPage} setPage={setPage}/>
         </div>
       </div>
