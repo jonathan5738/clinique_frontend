@@ -8,7 +8,7 @@ import "./BlogHomepage.css"
 import {gsap} from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useEffect, useRef, useState } from "react";
-import { useGetAllDepartmentPublicQuery, useGetBlogPostByDepartmentQuery, useGetFeaturedBlogPostQuery } from "../../api"
+import { useGetAllDepartmentPublicQuery, useGetAllOrderedBlogPostQuery, useGetBlogPostByDepartmentQuery, useGetFeaturedBlogPostQuery } from "../../api"
 
 export default function BlogHomepage(){
     //const [page, setPage] = useState<number>(1); change this
@@ -49,7 +49,12 @@ export default function BlogHomepage(){
         isLoading: isDepartmentsLoading
     } = useGetAllDepartmentPublicQuery();
 
-    console.log(isDesktop)
+    const {
+        data: OrderedPosts,
+        isSuccess: isOrderedPostsSuccess,
+        isFetching: isOrderedPostsFetching,
+        isLoading: isOrderedPostsLoading
+    } = useGetAllOrderedBlogPostQuery();
     useGSAP(() => {
         const headerTimeline = gsap.timeline({
             defaults: {y: 40, opacity: 0}
@@ -139,7 +144,7 @@ export default function BlogHomepage(){
                     <div className="post-excerpt-card-img card-deco" style={{
                         marginRight: "2rem"
                     }}>
-                        <p>{name}</p>
+                        <p className="post-excerpt-card-title">{name}</p>
                     </div>
                     <div className="post-excerpt-container-grid" style={{ 
                         paddingLeft: "2rem",
@@ -225,6 +230,38 @@ export default function BlogHomepage(){
     } else if(isDepartmentsFetching || isDepartmentsLoading){
         departmentLists = <p>loading...</p>
     }
+
+    let recentPosts;
+    let relatedPosts;
+    if(isOrderedPostsSuccess){
+        recentPosts = OrderedPosts.slice(0, 3).map(post => {
+            return (
+                <RecentPostCard 
+                    id={post.id} 
+                    excerptTitle={post.excerptTitle}
+                    excerptImage={post.excerptImage}
+                    excerptBody={post.excerptBody}
+                    departmentName={post.departmentName}
+                />
+            )
+        });
+        relatedPosts = OrderedPosts.slice(3, OrderedPosts.length)
+        .map(post => {
+            return (
+                <RelatedArticleCard
+                  id={post.id}
+                  excerptTitle={post.excerptTitle}
+                  excerptBody={post.excerptBody}
+                  excerptImage={post.excerptImage}
+                  departmentName={post.departmentName}
+                />
+            )
+        })
+    } else if(isOrderedPostsFetching || isOrderedPostsLoading){
+        recentPosts = <p>loading...</p>
+        relatedPosts = <p>loading...</p>
+    }
+
     return (
      <div className="blog-homepage" ref={scope}>
         <header className="container blog-header">
@@ -235,9 +272,7 @@ export default function BlogHomepage(){
             <section className="recent-container">
                 <h3>Articles recent</h3>
                 <div className="recent-container-grid">
-                    <RecentPostCard/>
-                    <RecentPostCard/>
-                    <RecentPostCard/>
+                   {recentPosts}
                 </div>
             </section>
             <aside className="recent-aside-container">
@@ -252,9 +287,7 @@ export default function BlogHomepage(){
         </div>
 
         <div className="related-posts">
-            <RelatedArticleCard/>
-            <RelatedArticleCard/>
-            <RelatedArticleCard/>
+            {relatedPosts}
         </div>
      </section>
 

@@ -187,6 +187,16 @@ export const apiSlice = createApi({
         getAllBlogPost: builder.query<BlogPostPagination, number>({
             query: (page) => `/BlogPost?page=${page}`
         }),
+        getAllOrderedBlogPost: builder.query<{
+            id: number;
+            departmentName: string;
+            excerptTitle: string;
+            excerptBody: string;
+            excerptImage: string;
+            author: string;
+        }[], void>({
+            query: () => "/BlogPost/Posts/Ordered"
+        }),
         getFeaturedBlogPost: builder.query<BlogPostExcerptPagination, number>({
             query: (page) => `/BlogPost/FeaturedPosts?page=${page}`
         }),
@@ -211,6 +221,7 @@ export const {
     useDeleteDepartmentMutation,
     useGetAllBlogPostQuery,
     useGetAllEventsQuery,
+    useGetAllOrderedBlogPostQuery,
     useGetAllDepartmentPublicQuery,
     useGetAllDoctorInfoQuery,
     useGetFeaturedBlogPostQuery,
