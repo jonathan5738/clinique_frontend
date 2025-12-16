@@ -129,6 +129,7 @@ export default function BlogHomepage(){
     let departmentPostsContainer;
     if(isDepartmentPostsSuccess){
         departmentPostsContainer = departmentPosts.map((d, index) => {
+            let name = d.name[0].toUpperCase() + d.name.slice(1, d.name.length);
             return (
             <div key={d.id}>
             {isDesktop && (
@@ -138,7 +139,7 @@ export default function BlogHomepage(){
                     <div className="post-excerpt-card-img card-deco" style={{
                         marginRight: "2rem"
                     }}>
-                        <p>{d.name}</p>
+                        <p>{name}</p>
                     </div>
                     <div className="post-excerpt-container-grid" style={{ 
                         paddingLeft: "2rem",
@@ -178,7 +179,7 @@ export default function BlogHomepage(){
                     <div className="post-excerpt-card-img card-deco" style={{
                         marginLeft: "2rem"
                     }}>
-                        <p>{d.name}</p>
+                        <p>{name}</p>
                     </div>
                 </div>
               )}
@@ -188,9 +189,14 @@ export default function BlogHomepage(){
              {isMobile  && !isDesktop && d.posts.length > 0 && (
                 <div className="container post-excerpt-container" key={d.id}>
                     <div className="post-excerpt-card-img card-deco">
-                        <p>{d.name}</p>
+                        <p>{name}</p>
                     </div>
-                    <div className="post-excerpt-container-grid">
+                    <div className="post-excerpt-container-grid" style={{
+                        paddingRight: "2rem",
+                        borderRightWidth: "1px",
+                        borderRightStyle: "solid",
+                        borderRightColor: "#333"
+                    }}>
                         {d.posts.map(post => {
                             return (
                                 <PostExcerptCard id={post.id}

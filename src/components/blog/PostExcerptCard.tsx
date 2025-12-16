@@ -1,3 +1,4 @@
+import { FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router";
 
 export default function PostExcerptCard({
@@ -11,6 +12,7 @@ export default function PostExcerptCard({
      excerptBody: string; 
      excerptImage: string;
 }) {
+    
     return (
         <div className="post-excerpt-card" key={id}>
             <div className="post-excerpt-img">
@@ -19,8 +21,8 @@ export default function PostExcerptCard({
             <div className="post-excerpt-text">
                 <h2 className="post-excerpt-title"><Link to={`/blog/${id}`}>{excerptTitle}</Link></h2>
                 <span className="post-excerpt-sub">pediatry</span>
-                <p>{excerptBody}</p>
-                <Link to={`/blog/${id}`} className="post-excerpt-link">read more</Link>
+                <p className="post-excerpt-body">{excerptBody}</p>
+                <Link to={`/blog/${id}`} className="post-excerpt-link">En savoir plus <FiArrowRight/></Link>
                 </div>
         </div>
     )
