@@ -207,7 +207,7 @@
             margin: 0;
         }
 
-        .article-related-card-text p {
+        .article-related-card-text p, .article-hor-card-para {
             font-size: 1rem;
         }
         
@@ -221,6 +221,7 @@
              grid-template-columns: repeat(2, 1fr);
              gap: 2rem;
            }
+           
         }
         
         @media screen and (width >= 935px){
@@ -315,6 +316,11 @@
             }
             .article-related-card {
                 column-gap: 2rem;
+            }
+
+            .article-related-card-text p,
+            .article-hor-card-para {
+                font-size: 1.5rem;
             }
         }
 
