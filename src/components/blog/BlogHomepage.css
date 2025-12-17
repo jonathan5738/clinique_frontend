@@ -208,7 +208,7 @@
         }
 
         .article-related-card-text p {
-            font-size: .8rem;
+            font-size: 1rem;
         }
         
         @media screen and (width >= 550px){
