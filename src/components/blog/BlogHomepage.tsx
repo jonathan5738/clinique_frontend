@@ -276,7 +276,7 @@ export default function BlogHomepage(){
                 </div>
             </section>
             <aside className="recent-aside-container">
-                <h3>Features posts</h3>
+                <h3>Articles à la une</h3>
                 {featuredPostCards}
             </aside>
        </section>
